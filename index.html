@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <title>Programación I | Parcial 1 | AMENDOLARE | GARCIA</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+  <div class="web">
+    <header>
+      <h1>Programación I | Parcial 1 | AMENDOLARE | GARCIA</h1>
+    </header>
+    <main>
+      <div class="card consigna">
+        <h2>Mis discos</h2>
+        
+        <div class="row">
+          <div class="button-grid col-6">
+            <button class="btn verde" onclick="cargarNuevoDisco()">Cargar nuevo disco</button>
+            <button class="btn rojo" onclick="mostrarDiscos()">Mostrar discos</button>
+            <button class="btn azul" onclick="buscarDisco()">Buscar disco por código</button>
+          </div>
+        </div>
+      </div>
+      <ul id="respuesta">
+        <!--Ejemplo de como mostrar la información de los discos:-->
+        <!--<li>
+            <h2>DISCO</h2>
+            <p>AUTOR</p>
+            <p>Código: CÓDIGO</p>
+            <h3>Pistas:</h3>
+            <ul>
+                <li>NOMBRE - DURACIÓN</li>
+                <li>NOMBRE - DURACIÓN</li>
+                <li>NOMBRE - DURACIÓN</li>
+            </ul>
+        </li>-->
+      </ul>
+
+      <script src="js/script.js"></script>
+    </main>
+    <footer>
+      <ul>
+        <li>Profesor: Cristian Corbalan</li>
+        <li>Alumno: Ricardo Rodolfo Garcia</li>
+        <li>Programación 1</li>
+      </ul>
+    </footer>
+  </div>
+</body>
+
+</html>

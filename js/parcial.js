@@ -42,6 +42,12 @@ let discos = [];
 
 // Función que solicita los datos del disco al usuario y lo guarda:
 const cargarNuevoDisco = () => {
+  let disco = {
+    nombre: prompt (`Ingrese el nombre del disco`) ?? '',
+    autor: prompt(`Ingrese el autor del disco`) ?? '',
+    codigo: +prompt(`Ingrese el código numérico del disco`) ?? '',
+  }
+
   // Cositas:
 };
 

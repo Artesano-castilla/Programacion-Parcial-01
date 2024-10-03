@@ -1,66 +1,38 @@
-'use strict';
+"use strict";
 
 /*
- * APELLIDO, NOMBRE | APELLIDO, NOMBRE
+ * AMENDOLARE, JOEL | GARCIA, RICARDO
  */
 
-// Ejemplo de la estructura de un disco:
-/*let disco = {
-  nombre: 'El lado oscuro de la Programación',
-  autor: 'Los Programadores Anónimos',
-  codigo: 1,
-  pistas: [
-    {
-      nombre: 'Esa cajita loca llamada variablecita',
-      duracion: 200,
-    },
-    {
-      nombre: 'Nunca quise ser un NaN',
-      duracion: 180,
-    },
-    {
-      nombre: 'No quiero programar',
-      duracion: 90,
-    },
-    {
-      nombre: 'Bajo presión',
-      duracion: 240,
-    },
-    {
-      nombre: 'La odisea de las variables privadas',
-      duracion: 120,
-    },
-    {
-      nombre: 'Sr. Programador',
-      duracion: 720,
-    },
-  ],
-};*/
-
+//+prompt(`Ingrese el código numérico del disco`) ?? ''
 // Array que almacenará los discos agregados por el usuario:
 let discos = [];
 
 // Función que solicita los datos del disco al usuario y lo guarda:
 const cargarNuevoDisco = () => {
-  let disco = {
-    nombre: prompt (`Ingrese el nombre del disco`) ?? '',
-    autor: prompt(`Ingrese el autor del disco`) ?? '',
-    codigo: +prompt(`Ingrese el código numérico del disco`) ?? '',
-  }
+ // do {
+    let disco = {
+      nombre: prompt(`Ingrese el nombre del disco`) ?? "",
+      autor: prompt(`Ingrese el autor del disco`) ?? "",
+      // codigo: agregarCodigo,//agregar y validar codigo unico
+      // pistas: agregarPistas //Se crea un arreglo con un objeto pista con nombre  y duracion
+    };
+    discos.push(disco);
+  //} while (condition);//desea ingresar otro disco???confirm
 
-  // Cositas:
+  // console.table(discos.disco[0]);
 };
 
 // Función que recorre todos los discos y los muestra en la etiqueta #respuesta:
 const mostrarDiscos = () => {
   // Variable que almacenará el contenido a mostrar dentro de #respuesta:
-  let respuesta = '';
+  let respuesta = "";
 
   // Ejemplo de cómo generar contenido:
-  respuesta += '<h1>Soy una etiqueta de ejemplo</h1>'
+  respuesta += "<h1>Soy una etiqueta de ejemplo</h1>";
 
   // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
-  document.getElementById('respuesta').innerHTML = respuesta;
+  document.getElementById("respuesta").innerHTML = respuesta;
 };
 
 // Todas las funciones que necesites:

@@ -29,6 +29,10 @@ const cargarNuevoDisco = () => {
 const solicitarCodigo = () => {//!joel
   //agregamos codigo del disco
   //posDisco= discos[i]
+  // hola hola hola
+  // hola hola hola
+  // hola hola hola
+
   return codigoIngresado
 
 }

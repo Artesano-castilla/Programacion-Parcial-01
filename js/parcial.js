@@ -40,8 +40,6 @@ const solicitarCodigo = () => {//!joel
 
 const solicitarPistas = () => {//!Richard
   let pistas = [];
- //git posdpfoi
- //asdaslkj
   do {
     let pista = {
       nombre: prompt(`Ingrese el nombre de la pista`) ?? "",

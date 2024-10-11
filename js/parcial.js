@@ -189,10 +189,19 @@ function solicitarPistas() {
 
   return pistas;
 }
+
+let contadorDiscos = 10; // ! Hardcodeo de contador de discos
+
 // Función que recorre todos los discos y los muestra en la etiqueta #respuesta:
 const mostrarDiscos = () => {
+    contadorDiscos++;
+
+
   
     let respuesta = "";
+
+    respuesta += `<h2>Se han cargado ${contadorDiscos} discos</h2>`; // Contador de discos
+    // respuesta += `<h2>Se han cargado ${discos.length} discos</h2>`;   
 
     // Recorremos cada disco en el array 'discos'
     discos.forEach(disco => {
@@ -215,9 +224,6 @@ const mostrarDiscos = () => {
   let duracionTotal;
   let promedioDuracion;
   let pistaMax = -Infinity;
-
-  // Ejemplo de cómo generar contenido:
-  respuesta += "<h1>Soy una etiqueta de ejemplo</h1>";
 
   // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
   document.getElementById("respuesta").innerHTML = respuesta;

@@ -4,70 +4,87 @@
  * AMENDOLARE, JOEL | GARCIA, RICARDO
  */
 
-//+prompt(`Ingrese el código numérico del disco`) ?? ''
-// Array que almacenará los discos agregados por el usuario:
-
 let discos = [];
-// Función que solicita los datos del disco al usuario y lo guarda:
+
 const cargarNuevoDisco = () => {
-  let posDisco;
-  let disco = {
-    nombre: prompt(`Ingrese el nombre del disco`) ?? "",
-    autor: prompt(`Ingrese el autor del disco`) ?? "",
-    codigo: solicitarCodigo()//agregar y validar codigo unico //!joel
-    
-  }
+  let disco = {}; // Objeto de disco
 
- pistas: solicitarPistas //!richard
+  // Solicitar el nombre
+  do {
+    disco.nombre = prompt("Ingrese el nombre del disco") ?? "";
+    if (disco.nombre.trim() === "") {
+      alert("El nombre del disco no puede estar vacío.");
+    }
+  } while (disco.nombre.trim() === "");
+
+  // Solicitar el autor
+  do {
+    disco.autor = prompt("Ingrese el autor del disco") ?? "";
+    if (disco.autor.trim() === "") {
+      alert("El autor del disco no puede estar vacío.");
+    }
+  } while (disco.autor.trim() === "");
+
+
+  disco.codigo = solicitarCodigo();
+  disco.pistas = solicitarPistas();
+  
+  discos.push(disco);
+  console.table(discos);
 };
-//agregar ordenado
-discos.push(disco);
-//
 
-console.table(discos);
-//console.table(discos[0].pistas);
-
-;
-
-function solicitarCodigo() {//!joel
-  //agregamos codigo del disco
-  //posDisco= discos[i]
-
+function solicitarCodigo() {
   let codigoValido = false;
   let codigoIngresado;
 
   while (!codigoValido) {
-    codigoIngresado = parseInt(prompt("Ingrese el código numérico del disco (entre 1 y 999)"));
+    codigoIngresado = parseInt(
+      prompt("Ingrese el código numérico del disco (entre 1 y 999)")
+    );
     if (isNaN(codigoIngresado)) {
+      console.table(discos);
+
       alert("Ingrese un número válido.");
     } else if (codigoIngresado < 1 || codigoIngresado > 999) {
       alert("El código debe estar entre 1 y 999.");
-    } else if (discos.find(disco => disco.codigo === codigoIngresado)) {
+    } else if (discos.find((disco) => disco.codigo === codigoIngresado)) {
       alert("El código ya existe. Ingrese otro.");
     } else {
       codigoValido = true;
     }
   }
-  return codigoIngresado; //! No se si estará bien richard?
+  return codigoIngresado; 
 }
 
-
-
-const solicitarPistas = () => {//!Richard
+function solicitarPistas() {
   let pistas = [];
-  do {
-    let pista = {
-      nombre: prompt(`Ingrese el nombre de la pista`) ?? "",
-      duracion: prompt(`Ingrese el duracion de la pista`) ?? "",
-    };
-    //validacion pista max
-  } while (condition);//confirm
-  pi
+  let continuar = true;
 
+  while (continuar) {
+    let pista = {};
 
-  //Se crea un arreglo con un objeto pista con nombre  y duracion
-  //pistaMax:-infinity ,
+    // Solicitar nombre de la pista
+    pista.nombre = prompt("Ingrese el nombre de la pista") ?? "";
+    if (pista.nombre.trim() === "") {
+      alert("El nombre de la pista no puede estar vacío.");
+      continue; 
+    }
 
+    // Solicitar duración de la pista
+    pista.duracion = parseInt(prompt("Ingrese la duración de la pista en segundos (entre 0 y 7200)"));
+    if (isNaN(pista.duracion) || pista.duracion < 0 || pista.duracion > 7200) {
+      alert("La duración debe ser un número entre 0 y 7200 segundos.");
+      continue; // Vuelve a pedir la pista si es inválida
+    }
+
+    // Agregar la pista al array
+    pistas.push(pista);
+
+    // Preguntar si desea continuar agregando pistas
+    continuar = confirm("¿Desea ingresar otra pista?");
+  }
+
+  return pistas;
 }
 // Función que recorre todos los discos y los muestra en la etiqueta #respuesta:
 const mostrarDiscos = () => {
@@ -84,5 +101,3 @@ const mostrarDiscos = () => {
   // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
   document.getElementById("respuesta").innerHTML = respuesta;
 };
-
-// Todas las funciones que necesites:

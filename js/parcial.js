@@ -4,7 +4,106 @@
  * AMENDOLARE, JOEL | GARCIA, RICARDO
  */
 
-let discos = [];
+let discos = [
+  {
+    nombre: "Disco 1",
+    autor: "Autor 1",
+    codigo: 101,
+    pistas: [
+      { nombre: "Pista 1", duracion: 180 },
+      { nombre: "Pista 2", duracion: 240 },
+      { nombre: "Pista 3", duracion: 210 }
+    ]
+  },
+  {
+    nombre: "Disco 2",
+    autor: "Autor 2",
+    codigo: 102,
+    pistas: [
+      { nombre: "Pista A", duracion: 300 },
+      { nombre: "Pista B", duracion: 360 }
+    ]
+  },
+  {
+    nombre: "Disco 3",
+    autor: "Autor 3",
+    codigo: 103,
+    pistas: [
+      { nombre: "Track 1", duracion: 200 },
+      { nombre: "Track 2", duracion: 220 },
+      { nombre: "Track 3", duracion: 240 },
+      { nombre: "Track 4", duracion: 180 }
+    ]
+  },
+  {
+    nombre: "Disco 4",
+    autor: "Autor 4",
+    codigo: 104,
+    pistas: [
+      { nombre: "Canción 1", duracion: 150 },
+      { nombre: "Canción 2", duracion: 190 },
+      { nombre: "Canción 3", duracion: 210 }
+    ]
+  },
+  {
+    nombre: "Disco 5",
+    autor: "Autor 5",
+    codigo: 105,
+    pistas: [
+      { nombre: "Tema 1", duracion: 230 },
+      { nombre: "Tema 2", duracion: 250 }
+    ]
+  },
+  {
+    nombre: "Disco 6",
+    autor: "Autor 6",
+    codigo: 106,
+    pistas: [
+      { nombre: "Melodía 1", duracion: 170 },
+      { nombre: "Melodía 2", duracion: 200 },
+      { nombre: "Melodía 3", duracion: 220 },
+      { nombre: "Melodía 4", duracion: 210 }
+    ]
+  },
+  {
+    nombre: "Disco 7",
+    autor: "Autor 7",
+    codigo: 107,
+    pistas: [
+      { nombre: "Pista Uno", duracion: 280 },
+      { nombre: "Pista Dos", duracion: 300 }
+    ]
+  },
+  {
+    nombre: "Disco 8",
+    autor: "Autor 8",
+    codigo: 108,
+    pistas: [
+      { nombre: "Canción A", duracion: 260 },
+      { nombre: "Canción B", duracion: 320 },
+      { nombre: "Canción C", duracion: 290 }
+    ]
+  },
+  {
+    nombre: "Disco 9",
+    autor: "Autor 9",
+    codigo: 109,
+    pistas: [
+      { nombre: "Track Alpha", duracion: 240 },
+      { nombre: "Track Beta", duracion: 270 }
+    ]
+  },
+  {
+    nombre: "Disco 10",
+    autor: "Autor 10",
+    codigo: 110,
+    pistas: [
+      { nombre: "Song X", duracion: 200 },
+      { nombre: "Song Y", duracion: 250 },
+      { nombre: "Song Z", duracion: 300 }
+    ]
+  }
+];
 
 const cargarNuevoDisco = () => {
   let disco = {}; // Objeto de disco
@@ -105,3 +204,22 @@ const mostrarDiscos = () => {
   // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
   document.getElementById("respuesta").innerHTML = respuesta;
 };
+// Función que recorre el disco buscando un elemento por codigo
+const buscarDisco = () => {
+  let respuesta = "";
+  
+  let codigo = prompt('Ingrese el codigo del disco a buscar')??'';
+  if (discos.find((disco) => disco.codigo === codigoIngresado)) {
+    respuesta += "<h1>El disco se encontro</h1>";
+  }else{
+    respuesta += "<h1>El disco no se encuentra</h1>";
+    
+  }
+  // Ejemplo de cómo generar contenido:
+
+  // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
+  document.getElementById("respuesta").innerHTML = respuesta;
+};
+
+
+

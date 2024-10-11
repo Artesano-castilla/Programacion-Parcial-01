@@ -195,34 +195,39 @@ function solicitarPistas() {
 const mostrarDiscos = () => {
   let contadorDiscos = 0;
   let respuesta = "";
+
   // Recorremos cada disco en el array 'discos'
   discos.forEach((disco) => {
+    
+    const cantidadPistas = disco.pistas.length;
+    const duracionTotal = disco.pistas.reduce((total, pista) => total + pista.duracion, 0);
+
+    // Mostrar información del disco
     respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
     respuesta += `<p>Autor: ${disco.autor}</p>`;
     respuesta += `<p>Código: ${disco.codigo}</p>`;
+    respuesta += `<p><strong>Cantidad de pistas:</strong> ${cantidadPistas}</p>`;
+    respuesta += `<p><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`;
 
     // Recorremos cada pista del disco
     respuesta += "<ul>";
     disco.pistas.forEach((pista) => {
-      respuesta += `<li>${pista.nombre} (${pista.duracion} segundos)</li>`;
+      respuesta += `<li>Pista:${pista.nombre} <ul><li`;
+      if (pista.duracion > 180) {
+      respuesta += `class="rojo-texto"`;
+      }
+      
+      respuesta += `>Duración:${pista.duracion} segundos</li></ul></li>`
     });
     respuesta += "</ul>";
-    contadorDiscos++;
+    contadorDiscos++; 
   });
 
   respuesta += `<h2>Se han cargado ${contadorDiscos} discos</h2>`; // Contador de discos
 
   document.getElementById("respuesta").innerHTML = respuesta;
-
-  //cantidad de pistas = pistas.length -1
-  // Variable que almacenará el contenido a mostrar dentro de #respuesta:
-  let duracionTotal;
-  let promedioDuracion;
-  let pistaMax = -Infinity;
-
-  // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
-  document.getElementById("respuesta").innerHTML = respuesta;
 };
+
 
 // Función que recorre el disco buscando un elemento por codigo
 const buscarDisco = () => {

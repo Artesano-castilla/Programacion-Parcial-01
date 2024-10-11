@@ -228,15 +228,26 @@ const mostrarDiscos = () => {
   // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
   document.getElementById("respuesta").innerHTML = respuesta;
 };
+
+
 // Función que recorre el disco buscando un elemento por codigo
 const buscarDisco = () => {
   let respuesta = "";
-  
-  let codigo = prompt('Ingrese el codigo del disco a buscar')??'';
-  if (discos.find((disco) => disco.codigo === codigoIngresado)) {
-    respuesta += "<h1>El disco se encontro</h1>";
+  let codigo = +prompt('Ingrese el codigo del disco a buscar')??'';
+  let disco = discos.find((disco) => disco.codigo === codigo);
+  if (disco) {
+    respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
+    respuesta += `<p>Autor: ${disco.autor}</p>`;
+    respuesta += `<p>Código: ${disco.codigo}</p>`;
+
+    // Recorremos cada pista del disco
+    respuesta += "<ul>";
+    disco.pistas.forEach(pista => {
+        respuesta += `<li>${pista.nombre} (${pista.duracion} segundos)</li>`;
+    });
+    respuesta += "</ul>";
   }else{
-    respuesta += "<h1>El disco no se encuentra</h1>";
+    respuesta += "<h1>El disco buscado no se encuentra</h1>";
     
   }
   // Ejemplo de cómo generar contenido:

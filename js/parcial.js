@@ -27,7 +27,7 @@ const cargarNuevoDisco = () => {
 
   disco.codigo = solicitarCodigo();
   disco.pistas = solicitarPistas();
-  
+
   discos.push(disco);
   console.table(disco.pistas);
   console.table(discos);
@@ -51,7 +51,7 @@ function solicitarCodigo() {
       codigoValido = true;
     }
   }
-  return codigoIngresado; 
+  return codigoIngresado;
 }
 
 function solicitarPistas() {
@@ -60,20 +60,26 @@ function solicitarPistas() {
 
   while (continuar) {
     let pista = {};
-
+    let validar;
     // Solicitar nombre de la pista
-    pista.nombre = prompt("Ingrese el nombre de la pista") ?? "";
-    if (pista.nombre.trim() === "") {
-      alert("El nombre de la pista no puede estar vacío.");
-      continue; 
-    }
+    do {
+      pista.nombre = prompt("Ingrese el nombre de la pista") ?? "";
+      validar = pista.nombre.trim() === "";
+      if (validar) {
+        alert("El nombre de la pista no puede estar vacío.");
+      }
+    } while (validar);
 
-    // Solicitar duración de la pista
-    pista.duracion = parseInt(prompt("Ingrese la duración de la pista en segundos (entre 0 y 7200)"));
-    if (isNaN(pista.duracion) || pista.duracion < 0 || pista.duracion > 7200) {
-      alert("La duración debe ser un número entre 0 y 7200 segundos.");
-      continue; // Vuelve a pedir la pista si es inválida
-    }
+    do {
+      // Solicitar duración de la pista
+      pista.duracion = parseInt(
+        prompt("Ingrese la duración de la pista en segundos (entre 0 y 7200)")
+      );
+      validar = isNaN(pista.duracion) || pista.duracion < 0 || pista.duracion > 7200;
+      if (validar) {
+        alert("La duración debe ser un número entre 0 y 7200 segundos.");
+      }
+    } while (validar);
 
     // Agregar la pista al array
     pistas.push(pista);

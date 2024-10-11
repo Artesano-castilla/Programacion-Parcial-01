@@ -73,12 +73,6 @@ body {
   background-color: #7e8da6;
 }
 
-.discos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Dos columnas */
-  gap: 20px; /* Espacio entre discos */
-  margin-bottom: 20px;
-}
 
 .disco-info {
   border: 2px solid #ffffff; 

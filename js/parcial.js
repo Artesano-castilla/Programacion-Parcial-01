@@ -202,7 +202,7 @@ const mostrarDiscos = () => {
     const duracionTotal = disco.pistas.reduce((total, pista) => total + pista.duracion, 0);
 
     // Mostrar información del disco
-    respuesta += `<div class="discos-grid"><div class="disco-info">`;
+    respuesta += `<div class="disco-info">`;
     respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
     respuesta += `<p>Autor: ${disco.autor}</p>`;
     respuesta += `<p>Código: ${disco.codigo}</p>`;
@@ -219,7 +219,7 @@ const mostrarDiscos = () => {
       respuesta += `>Duración: ${pista.duracion} segundos</li></ul></li>`;
     });
     respuesta += "</ul>";
-    respuesta += `</div></div>`; // Cerramos el contenedor del disco
+    respuesta += `</div>`; // Cerramos el contenedor del disco
 
     contadorDiscos++; 
   });
@@ -236,8 +236,7 @@ const buscarDisco = () => {
   let codigo = +prompt("Ingrese el codigo del disco a buscar") ?? "";
   let disco = discos.find((disco) => disco.codigo === codigo);
   if (disco) {
-    respuesta += `
-      <div class="discos-grid">
+    respuesta += `     
         <div class="disco-info">
           <h2>${disco.nombre}</h2>
           <p><strong>Autor:</strong> ${disco.autor}</p>
@@ -254,8 +253,7 @@ const buscarDisco = () => {
 
     respuesta += `
           </ul>
-        </div>
-      </div>
+        </div>     
     `;
   } else {
     respuesta += `

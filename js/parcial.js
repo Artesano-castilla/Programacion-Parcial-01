@@ -194,13 +194,14 @@ function solicitarPistas() {
 const mostrarDiscos = () => {
   let contadorDiscos = 0;
   let respuesta = "";
+  let promedio;
 
   // Recorremos cada disco en el array 'discos'
   discos.forEach((disco) => {
     
     const cantidadPistas = disco.pistas.length;
     const duracionTotal = disco.pistas.reduce((total, pista) => total + pista.duracion, 0);
-
+    const pistaMax = disco.pistas.reduce((max,pista)=>max.duracion > pista.duracion ? max:pista, disco.pistas[0]);
     // Mostrar información del disco
     respuesta += `<div class="disco-info">`;
     respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
@@ -208,6 +209,10 @@ const mostrarDiscos = () => {
     respuesta += `<p>Código: ${disco.codigo}</p>`;
     respuesta += `<p><strong>Cantidad de pistas:</strong> ${cantidadPistas}</p>`;
     respuesta += `<p><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`;
+    promedio = duracionTotal / cantidadPistas;
+    respuesta += `<p><strong>Promedio del disco:</strong> ${promedio} segundos</p>`;
+    respuesta += `<p><strong>Pista con mayor duración:</strong> ${pistaMax.nombre} con ${pistaMax.duracion} segundos</p>`;
+
 
     // Recorremos cada pista del disco
     respuesta += "<ul>";

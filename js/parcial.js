@@ -191,7 +191,6 @@ function solicitarPistas() {
   return pistas;
 }
 
-// Función que recorre todos los discos y los muestra en la etiqueta #respuesta:
 const mostrarDiscos = () => {
   let contadorDiscos = 0;
   let respuesta = "";
@@ -203,6 +202,7 @@ const mostrarDiscos = () => {
     const duracionTotal = disco.pistas.reduce((total, pista) => total + pista.duracion, 0);
 
     // Mostrar información del disco
+    respuesta += `<div class="discos-grid"><div class="disco-info">`;
     respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
     respuesta += `<p>Autor: ${disco.autor}</p>`;
     respuesta += `<p>Código: ${disco.codigo}</p>`;
@@ -212,21 +212,22 @@ const mostrarDiscos = () => {
     // Recorremos cada pista del disco
     respuesta += "<ul>";
     disco.pistas.forEach((pista) => {
-      respuesta += `<li>Pista:${pista.nombre} <ul><li`;
+      respuesta += `<li>Pista: ${pista.nombre} <ul><li `;
       if (pista.duracion > 180) {
-      respuesta += `class="rojo-texto"`;
+        respuesta += `class="rojo-texto"`;  
       }
-      
-      respuesta += `>Duración:${pista.duracion} segundos</li></ul></li>`
+      respuesta += `>Duración: ${pista.duracion} segundos</li></ul></li>`;
     });
     respuesta += "</ul>";
+    respuesta += `</div></div>`; // Cerramos el contenedor del disco
+
     contadorDiscos++; 
   });
 
-  respuesta += `<h2>Se han cargado ${contadorDiscos} discos</h2>`; // Contador de discos
-
+  // Finalmente, mostramos la respuesta en el elemento con id 'respuesta'
   document.getElementById("respuesta").innerHTML = respuesta;
 };
+
 
 
 // Función que recorre el disco buscando un elemento por codigo

@@ -92,12 +92,30 @@ function solicitarPistas() {
 }
 // Función que recorre todos los discos y los muestra en la etiqueta #respuesta:
 const mostrarDiscos = () => {
+  
+    let respuesta = "";
+
+    // Recorremos cada disco en el array 'discos'
+    discos.forEach(disco => {
+        respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
+        respuesta += `<p>Autor: ${disco.autor}</p>`;
+        respuesta += `<p>Código: ${disco.codigo}</p>`;
+
+        // Recorremos cada pista del disco
+        respuesta += "<ul>";
+        disco.pistas.forEach(pista => {
+            respuesta += `<li>${pista.nombre} (${pista.duracion} segundos)</li>`;
+        });
+        respuesta += "</ul>";
+    });
+
+    document.getElementById("respuesta").innerHTML = respuesta;
+
   //cantidad de pistas = pistas.length -1
   // Variable que almacenará el contenido a mostrar dentro de #respuesta:
   let duracionTotal;
   let promedioDuracion;
   let pistaMax = -Infinity;
-  let respuesta = "";
 
   // Ejemplo de cómo generar contenido:
   respuesta += "<h1>Soy una etiqueta de ejemplo</h1>";

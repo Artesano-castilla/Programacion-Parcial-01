@@ -231,12 +231,13 @@ const buscarDisco = () => {
   let disco = discos.find((disco) => disco.codigo === codigo);
   if (disco) {
     respuesta += `
-      <div class="disco-info">
-        <h2>${disco.nombre}</h2>
-        <p><strong>Autor:</strong> ${disco.autor}</p>
-        <p><strong>Código:</strong> ${disco.codigo}</p>
-        <h3>Pistas del disco:</h3>
-        <ul class="pistas-list">
+      <div class="discos-grid">
+        <div class="disco-info">
+          <h2>${disco.nombre}</h2>
+          <p><strong>Autor:</strong> ${disco.autor}</p>
+          <p><strong>Código:</strong> ${disco.codigo}</p>
+          <h3>Pistas del disco:</h3>
+          <ul class="pistas-list">
     `;
 
     // Recorremos cada pista del disco
@@ -246,7 +247,8 @@ const buscarDisco = () => {
     });
 
     respuesta += `
-        </ul>
+          </ul>
+        </div>
       </div>
     `;
   } else {

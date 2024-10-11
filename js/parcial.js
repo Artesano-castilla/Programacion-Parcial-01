@@ -25,11 +25,11 @@ const cargarNuevoDisco = () => {
     }
   } while (disco.autor.trim() === "");
 
-
   disco.codigo = solicitarCodigo();
   disco.pistas = solicitarPistas();
   
   discos.push(disco);
+  console.table(disco.pistas);
   console.table(discos);
 };
 
@@ -42,8 +42,6 @@ function solicitarCodigo() {
       prompt("Ingrese el código numérico del disco (entre 1 y 999)")
     );
     if (isNaN(codigoIngresado)) {
-      console.table(discos);
-
       alert("Ingrese un número válido.");
     } else if (codigoIngresado < 1 || codigoIngresado > 999) {
       alert("El código debe estar entre 1 y 999.");

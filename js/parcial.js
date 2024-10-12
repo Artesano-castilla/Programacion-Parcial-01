@@ -219,7 +219,7 @@ const mostrarDiscos = () => {
     respuesta += `<div class="disco-info">`;
     respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
     respuesta += `<p>Autor: ${disco.autor}</p>`;
-    respuesta += `<p>Código: ${disco.codigo}</p>`;    
+    respuesta += `<p>Código: ${disco.codigo}</p>`;
 
     // Recorremos cada pista del disco
     respuesta += "<p>Pistas:</p><ul>";
@@ -240,8 +240,8 @@ const mostrarDiscos = () => {
     if (discoMayorDuracion === disco) {
       respuesta += `class="rojo-texto"`;
     }
-    respuesta += `><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`
-    respuesta += `</div>`; 
+    respuesta += `><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`;
+    respuesta += `</div>`;
 
     contadorDiscos++;
   });

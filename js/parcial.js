@@ -60,8 +60,6 @@ const cargarNuevoDisco = () => {
   disco.pistas = solicitarPistas();
 
   discos.push(disco);
-  console.table(disco.pistas);
-  console.table(discos);
 };
 
 function solicitarCodigo() {

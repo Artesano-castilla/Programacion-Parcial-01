@@ -211,18 +211,18 @@ const mostrarDiscos = () => {
       (total, pista) => total + pista.duracion,
       0
     );
+    promedio = duracionTotal / cantidadPistas;
     const pistaMax = disco.pistas.reduce(
       (max, pista) => (max.duracion > pista.duracion ? max : pista),
       disco.pistas[0]
     );
     // Mostrar información del disco
-    respuesta += `<div class="disco-info">`;
-    respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
-    respuesta += `<p>Autor: ${disco.autor}</p>`;
-    respuesta += `<p>Código: ${disco.codigo}</p>`;
-
-    // Recorremos cada pista del disco
-    respuesta += "<p>Pistas:</p><ul>";
+    respuesta += `<div class="disco-info">
+                    <h3>Disco: ${disco.nombre}</h3>
+                    <p>Autor: ${disco.autor}</p>
+                    <p>Código: ${disco.codigo}</p>
+                    <p>Pistas:</p><ul>`;
+    // Recorremos cada pista del disco   
     disco.pistas.forEach((pista) => {
       respuesta += `<li>${pista.nombre} <ul><li `;
       if (pista.duracion > 180) {
@@ -230,18 +230,17 @@ const mostrarDiscos = () => {
       }
       respuesta += `>Duración: ${pista.duracion} segundos</li></ul></li>`;
     });
-    respuesta += "</ul>";
+    respuesta += `</ul>
+                  <p><strong>Cantidad de pistas:</strong> ${cantidadPistas}</p>
+                  <p><strong>Promedio del disco:</strong> ${promedio} segundos</p>
+                  <p><strong>Pista con mayor duración:</strong> ${pistaMax.nombre} con ${pistaMax.duracion} segundos</p>
+                  <p `;  
 
-    respuesta += `<p><strong>Cantidad de pistas:</strong> ${cantidadPistas}</p>`;
-    promedio = duracionTotal / cantidadPistas;
-    respuesta += `<p><strong>Promedio del disco:</strong> ${promedio} segundos</p>`;
-    respuesta += `<p><strong>Pista con mayor duración:</strong> ${pistaMax.nombre} con ${pistaMax.duracion} segundos</p>`;
-    respuesta += `<p `;
     if (discoMayorDuracion === disco) {
       respuesta += `class="rojo-texto"`;
     }
-    respuesta += `><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`;
-    respuesta += `</div>`;
+    respuesta += `><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>
+              </div>`;
 
     contadorDiscos++;
   });
@@ -258,7 +257,7 @@ const buscarDisco = () => {
   if (disco) {
     respuesta += `     
         <div class="disco-info">
-          <h2>${disco.nombre}</h2>
+          <h3>Disco:${disco.nombre}</h3>
           <p><strong>Autor:</strong> ${disco.autor}</p>
           <p><strong>Código:</strong> ${disco.codigo}</p>
           <h3>Pistas del disco:</h3>

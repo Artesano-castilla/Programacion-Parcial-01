@@ -22,7 +22,7 @@ html {
 
 body {
   font-family: var(--primary-font), sans-serif;
-  background: linear-gradient(#33496c, #000e2d);
+  background: #33496c;
   color: white;
   display: flex;
   justify-content: center;
@@ -44,16 +44,10 @@ body {
   margin-top: 20px;
 }
 
-.verde-texto {
-  color: #369b65;
-}
+
 
 .rojo-texto {
   color: #e3796a;
-}
-
-.azul-texto {
-  color: #4180ed;
 }
 
 

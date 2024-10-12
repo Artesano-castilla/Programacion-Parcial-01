@@ -114,7 +114,6 @@ function solicitarPistas() {
     // Agregar la pista al array
     pistas.push(pista);
 
-    // Preguntar si desea continuar agregando pistas
     continuar = confirm("¿Desea ingresar otra pista?");
   }
 
@@ -125,6 +124,8 @@ const mostrarDiscos = () => {
   let contadorDiscos = 0;
   let respuesta = "";
   let promedio;
+
+  //buscamos el disco con mayor duracion
   let discoMayorDuracion = discos.reduce(
     (max, disco) =>
       disco.pistas.reduce((total, pista) => total + pista.duracion, 0) >
@@ -165,7 +166,7 @@ const mostrarDiscos = () => {
                   <p><strong>Promedio del disco:</strong> ${promedio} segundos</p>
                   <p><strong>Pista con mayor duración:</strong> ${pistaMax.nombre} con ${pistaMax.duracion} segundos</p>
                   <p `;  
-
+    //Preguntamos si el disco es el de mayor duracion
     if (discoMayorDuracion === disco) {
       respuesta += `class="rojo-texto"`;
     }
@@ -175,7 +176,6 @@ const mostrarDiscos = () => {
     contadorDiscos++;
   });
 
-  // Finalmente, mostramos la respuesta en el elemento con id 'respuesta'
   document.getElementById("respuesta").innerHTML = respuesta;
 };
 
@@ -211,8 +211,6 @@ const buscarDisco = () => {
     </div>
   `;
   }
-  // Ejemplo de cómo generar contenido:
 
-  // Sentencia que busca la etiqueta #respuesta y le cambia el contenido interno por la variable "respuesta"
   document.getElementById("respuesta").innerHTML = respuesta;
 };

@@ -11,7 +11,7 @@ let discos = [
     codigo: 101,
     pistas: [
       { nombre: "Pista 1", duracion: 180 },
-      { nombre: "Pista 2", duracion: 240 },
+      { nombre: "Pista 2", duracion: 900 },
       { nombre: "Pista 3", duracion: 210 },
     ],
   },
@@ -195,45 +195,60 @@ const mostrarDiscos = () => {
   let contadorDiscos = 0;
   let respuesta = "";
   let promedio;
+  let discoMayorDuracion = discos.reduce(
+    (max, disco) =>
+      disco.pistas.reduce((total, pista) => total + pista.duracion, 0) >
+      max.pistas.reduce((total, pista) => total + pista.duracion, 0)
+        ? disco
+        : max,
+    discos[0]
+  );
 
   // Recorremos cada disco en el array 'discos'
   discos.forEach((disco) => {
-    
     const cantidadPistas = disco.pistas.length;
-    const duracionTotal = disco.pistas.reduce((total, pista) => total + pista.duracion, 0);
-    const pistaMax = disco.pistas.reduce((max,pista)=>max.duracion > pista.duracion ? max:pista, disco.pistas[0]);
+    const duracionTotal = disco.pistas.reduce(
+      (total, pista) => total + pista.duracion,
+      0
+    );
+    const pistaMax = disco.pistas.reduce(
+      (max, pista) => (max.duracion > pista.duracion ? max : pista),
+      disco.pistas[0]
+    );
     // Mostrar información del disco
     respuesta += `<div class="disco-info">`;
     respuesta += `<h2>Disco: ${disco.nombre}</h2>`;
     respuesta += `<p>Autor: ${disco.autor}</p>`;
-    respuesta += `<p>Código: ${disco.codigo}</p>`;
-    respuesta += `<p><strong>Cantidad de pistas:</strong> ${cantidadPistas}</p>`;
-    respuesta += `<p><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`;
-    promedio = duracionTotal / cantidadPistas;
-    respuesta += `<p><strong>Promedio del disco:</strong> ${promedio} segundos</p>`;
-    respuesta += `<p><strong>Pista con mayor duración:</strong> ${pistaMax.nombre} con ${pistaMax.duracion} segundos</p>`;
-
+    respuesta += `<p>Código: ${disco.codigo}</p>`;    
 
     // Recorremos cada pista del disco
-    respuesta += "<ul>";
+    respuesta += "<p>Pistas:</p><ul>";
     disco.pistas.forEach((pista) => {
-      respuesta += `<li>Pista: ${pista.nombre} <ul><li `;
+      respuesta += `<li>${pista.nombre} <ul><li `;
       if (pista.duracion > 180) {
-        respuesta += `class="rojo-texto"`;  
+        respuesta += `class="rojo-texto"`;
       }
       respuesta += `>Duración: ${pista.duracion} segundos</li></ul></li>`;
     });
     respuesta += "</ul>";
-    respuesta += `</div>`; // Cerramos el contenedor del disco
 
-    contadorDiscos++; 
+    respuesta += `<p><strong>Cantidad de pistas:</strong> ${cantidadPistas}</p>`;
+    promedio = duracionTotal / cantidadPistas;
+    respuesta += `<p><strong>Promedio del disco:</strong> ${promedio} segundos</p>`;
+    respuesta += `<p><strong>Pista con mayor duración:</strong> ${pistaMax.nombre} con ${pistaMax.duracion} segundos</p>`;
+    respuesta += `<p `;
+    if (discoMayorDuracion === disco) {
+      respuesta += `class="rojo-texto"`;
+    }
+    respuesta += `><strong>Duración total del disco:</strong> ${duracionTotal} segundos</p>`
+    respuesta += `</div>`; 
+
+    contadorDiscos++;
   });
 
   // Finalmente, mostramos la respuesta en el elemento con id 'respuesta'
   document.getElementById("respuesta").innerHTML = respuesta;
 };
-
-
 
 // Función que recorre el disco buscando un elemento por codigo
 const buscarDisco = () => {

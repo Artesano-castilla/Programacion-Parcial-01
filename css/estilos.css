@@ -44,12 +44,9 @@ body {
   margin-top: 20px;
 }
 
-
-
 .rojo-texto {
   color: #e3796a;
 }
-
 
 .verde {
   background-color: #369b65;
@@ -66,7 +63,6 @@ body {
 .gris {
   background-color: #7e8da6;
 }
-
 
 .disco-info {
   border: 2px solid #ffffff; 
